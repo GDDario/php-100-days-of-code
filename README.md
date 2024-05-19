@@ -1,6 +1,6 @@
 ### README
 
-As specified in the [roadmap](ROADMAP.md), I will follow the guide to improve my knowledge practices in PHP.
+As specified in the [roadmap](ROADMAP.md), I will follow the guide to improve my knowledge and practices in PHP.
 
 At every lesson/project, I will also create notes containing some insights.
 
