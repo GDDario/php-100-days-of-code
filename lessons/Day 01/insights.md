@@ -10,7 +10,6 @@ Currently, PHP continues to evolve, with version 8 released in November 2020. Th
 
 Over the years, PHP has remained an essential tool in web development, being used on millions of websites and by major platforms such as  WordPress, Facebook, and Wikipedia.
 
-
 ### Installation (Ubuntu 24.04 LTS)
 
 ### PPA
