@@ -1,0 +1,1 @@
+In PHP, accented strings needs to be treated sometimes with the multibyte functions, like `mb_strlen` or `mb_strtolower`. This happens because the accents are normally interpreted as an individual character instead of combining with another one (expected behavior).
