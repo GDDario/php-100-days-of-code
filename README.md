@@ -5,7 +5,7 @@ As specified in the [roadmap](ROADMAP.md), I will follow the guide to improve my
 At every lesson/project, I will also create notes containing some insights.
 
 ### How to run
-The scripts that do not include HTML can be executed using only the php file.php command, but when there are HTML files, you need to use the built-in PHP server, running the command php -S localhost:8080 in the desired directory, and accessing the file through the URL, as in the example "localhost:8080/script.php".
+Scripts that do not include HTML can be executed using only the php file.php command, but when there are HTML files, you need to use the built-in PHP server, or in cases that involve a MySQL connection, use XAMPP.
 
 ### Read more
 This repository was inpired on this github project: https://github.com/JennieOliveira99/100DaysOfCodePHP.
