@@ -1,0 +1,1 @@
+It is important to note that sessions also create cookies, such the it ID,
