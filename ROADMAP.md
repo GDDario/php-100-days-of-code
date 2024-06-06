@@ -89,7 +89,6 @@ This is a guide to recap/study PHP in 100 days. Each day focuses on a specific t
 **Day 16**: File Handling
 
 - Opening, Reading, Writing, Closing Files
-- File Uploads
 
 **Day 17**: Date and Time
 
