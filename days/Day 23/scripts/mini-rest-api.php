@@ -4,20 +4,20 @@
 header('Content-Type: application/json');
 
 $method = $_SERVER['REQUEST_METHOD'];
-$request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
+$requestUri = isset($_SERVER['PATH_INFO']) ? explode('/', trim($_SERVER['PATH_INFO'], '/')) : [];
 
 switch ($method) {
     case 'GET':
-        handleGet($request);
+        handleGet($requestUri);
         break;
     case 'POST':
-        handlePost($request);
+        handlePost();
         break;
     case 'PUT':
-        handlePut($request);
+        handlePut($requestUri);
         break;
     case 'DELETE':
-        handleDelete($request);
+        handleDelete($requestUri);
         break;
 }
 
@@ -25,7 +25,7 @@ function handleGet($request)
 {
     $users = [
         [
-            'id' => 'SADIUHU@NLSD',
+            'id' => 'SADIUHU_NLSD',
             'name' => 'Luiddy'
         ],
         [
@@ -34,33 +34,68 @@ function handleGet($request)
         ]
     ];
 
-    // Verify if the request appoints/queries a specific resource.
+    // Verify if the request points to a specific resource.
     if (isset($request[0])) {
         $id = $request[0];
         foreach ($users as $user) {
             if ($user['id'] === $id) {
-                echo json_encode($users);
-                return;
+                header("HTTP/1.1 200 Success");
+                echo json_encode($user);
+                exit; // Ensure the script stops executing after sending the response
             }
         }
 
-        echo "User with id \"$id\" not found.";
+        // Send a 404 header if the user is not found
+        header("HTTP/1.1 404 Not Found");
+        echo json_encode(["message" => "User with id \"$id\" not found."]);
+        exit;
     } else {
+        header("HTTP/1.1 200 Success");
         echo json_encode($users);
+        exit; // Ensure the script stops executing after sending the response
     }
 }
 
-function handlePost($request)
+function handlePost()
 {
-    echo $request;
+    $input = json_decode(file_get_contents('php://input'), true);
+    if ($input && isset($input['name'])) {
+        header("HTTP/1.1 200 Created");
+        echo json_encode(['status' => 201, 'message' => 'User created successfully!']);
+    } else {
+        header("HTTP/1.1 400 Bad Content");
+        echo json_encode(['status' => 400, 'message' =>  'Invalid data.']);
+    }
+    exit;
 }
 
 function handlePut($request)
 {
-    echo $request;
+    if (isset($request[0])) {
+        $id = $request[0];
+        $input = json_decode(file_get_contents('php://input'), true);
+        if ($input && isset($input['name'])) {
+            header("HTTP/1.1 200 Success");
+            echo json_encode(['status' => 200, "message" => "User updated successfully.", "id" => $id, "user" => $input]);
+        } else {
+            header("HTTP/1.1 400 Bad Content");
+            echo json_encode(["message" => "Invalid data."]);
+        }
+    } else {
+        header("HTTP/1.1 400 Bad Content");
+        echo json_encode(["message" => "Invalid ID"]);
+    }
 }
 
 function handleDelete($request)
 {
-    echo $request;
+    if (isset($request[0])) {
+        $id = $request[0];
+        header("HTTP/1.1 200 Success");
+        echo json_encode(['status' => 200, "message" => "User with id $id deleted succesffully."]);
+    } else {
+        header("HTTP/1.1 400 Bad Content");
+        echo json_encode(["message" => "Invalid ID"]);
+    }
+    exit;
 }
