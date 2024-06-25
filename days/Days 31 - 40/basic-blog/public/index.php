@@ -1,22 +1,17 @@
 <?php
 
-require '../bootstrap.php';
+session_start();
 
-use App\Helpers\Uri;
-use App\Controllers\BaseController;
+require '../config/config.php';
+require '../includes/functions/redirect.php';
 
-$controller = new BaseController;
-$controller = $controller->load();
+// $_SESSION['user_id'] = 2;
+// unset($_SESSION['user_id']);
 
-dd($controller);
+// $hasSession = isset($_SESSION['user_id']);
 
-// $controller = new Controller();
-// $controller->getController();
-
-// $method = new Method();
-// $method->getMethod();
-
-// $controler->$method($parameters);
- 
-// $parameters = new Parameters;
-// $parameters->getParameters();
+// if ($hasSession) {
+//     redirectLoggedUser($_SESSION['user_id']);
+// } else {
+//     header('Location: pages/login.php');
+// }
