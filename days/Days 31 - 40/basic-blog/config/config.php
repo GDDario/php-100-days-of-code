@@ -5,4 +5,4 @@ require_once '../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 
-Dotenv::createImmutable('../')->load();
+Dotenv::createImmutable(__DIR__ . '/../')->load();
