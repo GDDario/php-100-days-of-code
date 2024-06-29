@@ -4,7 +4,7 @@ To maintain the commits in this repository, I will make a checklist reflecting t
 
 - [x] Project Setup
 - [x] Database Design
-- [ ] User Authentication
+- [x] User Authentication
 - [ ] CRUD Operations for Posts
 - [ ] Comment System
 - [ ] User Roles and Permissions
